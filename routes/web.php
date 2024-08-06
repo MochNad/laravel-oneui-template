@@ -1,20 +1,22 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ImpersonateController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::post('leave-impersonation', [ImpersonateController::class, 'leaveImpersonation'])->name('leave-impersonation');
+
+Route::group(['as' => 'landing.'], function () {
+    Route::get('/', [LandingController::class, 'index'])->name('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+require __DIR__ . '/partials/auth.php';
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    require __DIR__ . '/partials/reference.php';
+    require __DIR__ . '/partials/dashboard.php';
+    require __DIR__ . '/partials/profile.php';
+    require __DIR__ . '/partials/master.php';
+    require __DIR__ . '/partials/management.php';
 });
-
-require __DIR__.'/auth.php';

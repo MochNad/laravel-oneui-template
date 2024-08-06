@@ -1,7 +1,5 @@
-<x-layouts.auth.app title="Verify Email" description="Verify your email address" author="Moch. Nad" ogTitle="Verify Email"
-    ogSiteName="{{ config('app.name') }}" ogDescription="Verify your email address on {{ config('app.name') }}"
-    ogUrl="" ogImage="" blockTitle="Verify Email" hrefOptionIcon="{{ route('logout') }}" titleOptionIcon="Log Out"
-    optionIcon="fa-sign-out-alt" headerTitle="{{ config('app.name') }}"
-    headerSubTitle="Please verify {{ Auth::user()->email }} to complete registration."
-    formAction="{{ route('verification.send') }}" buttonIcon="fa-envelope" buttonText="Resend"
-    copyrightText="{{ config('app.name') }}" :hrefOptionForm="true" />
+<x-layouts.auth.app headerBlockTitle="Verify Email" headerHrefOptionIcon="{{ route('logout') }}"
+    headerTitleOptionIcon="Log Out" headerOptionIcon="fa-sign-out-alt"
+    contentHeaderSubTitle="We have sent to {{ auth()->user()->email }} a verification email. Please check your inbox or spam folder."
+    contentFormAction="{{ route('verification.send') }}" contentButtonSubmitIcon="fa-envelope"
+    contentButtonSubmitText="Resend" :headerHrefOptionForm="true" />

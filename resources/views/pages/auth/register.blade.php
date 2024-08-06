@@ -1,37 +1,38 @@
-<x-layouts.auth.app title="Register" description="Create a new account" author="Moch. Nad" ogTitle="Register Page"
-    ogSiteName="{{ config('app.name') }}" ogDescription="Register to create a new account on {{ config('app.name') }}"
-    ogUrl="" ogImage="" blockTitle="Create Account" hrefOptionText="javascript:void(0)"
-    hrefOptionIcon="{{ route('login') }}" titleOptionIcon="Sign In" optionIcon="fa-sign-in-alt"
-    headerTitle="{{ config('app.name') }}" headerSubTitle="Please fill the following details to create a new account."
-    formAction="{{ route('register') }}" titleModal="Terms and Conditions" aggreeText="I Agree" optionText="View Terms"
-    buttonIcon="fa-user-plus" buttonText="Sign Up" copyrightText="{{ config('app.name') }}" :inputs="[
+<x-layouts.auth.app headerBlockTitle="Create Account" headerHrefOptionText="javascript:void(0)"
+    headerOptionText="View Terms" headerHrefOptionIcon="{{ route('login') }}" headerOptionIcon="fa-sign-in-alt"
+    headerTitleOptionIcon="Sign In" headerTitleModal="Terms and Conditions" headerAggreeText="I Agree"
+    contentHeaderSubTitle="Please fill the following details to create a new account."
+    contentFormAction="{{ route('register') }}" contentButtonSubmitIcon="fa-user-plus" contentButtonSubmitText="Sign Up" :contentInputs="[
         [
             'type' => 'text',
             'id' => 'name_field',
             'name' => 'name',
             'placeholder' => 'Name',
-            'validation' => 'required|min:3',
+            'validation' => 'min:3',
+            'attribute' => 'required',
         ],
         [
             'type' => 'email',
             'id' => 'email_field',
             'name' => 'email',
             'placeholder' => 'Email',
-            'validation' => 'required|email',
+            'attribute' => 'required',
         ],
         [
             'type' => 'password',
             'id' => 'password_field',
             'name' => 'password',
             'placeholder' => 'Password',
-            'validation' => 'required|capitals|numbers|specials|min:8',
+            'validation' => 'has_capitals|has_numbers|has_specials|min:8',
+            'attribute' => 'required',
         ],
         [
             'type' => 'password',
             'id' => 'password_confirmation_field',
             'name' => 'password_confirmation',
             'placeholder' => 'Confirm Password',
-            'validation' => 'required|same:password',
+            'validation' => 'same:password',
+            'attribute' => 'required',
         ],
         [
             'type' => 'checkbox',
@@ -41,7 +42,7 @@
             'validation' => 'accepted',
         ],
     ]"
-    :terms="[
+    :headerTerms="[
         [
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, nemo!',
         ],

@@ -46,8 +46,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        $user->sendEmailVerificationNotification();
-
-        return response()->json(['redirect' => route('dashboard')]);
+        return jsonRedirect('dashboard.index', 'Welcome ' . $user->name . '!');
     }
 }

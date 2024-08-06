@@ -1,17 +1,15 @@
-<x-layouts.auth.app title="Login" description="Login to your account" author="Moch. Nad" ogTitle="Login Page"
-    ogSiteName="{{ config('app.name') }}" ogDescription="Login to access your account on {{ config('app.name') }}"
-    ogUrl="" ogImage="" blockTitle="Sign In" hrefOptionText="{{ route('password.request') }}"
-    optionText="Forgot Password?" hrefOptionIcon="{{ route('register') }}" titleOptionIcon="New Account"
-    optionIcon="fa-user-plus" headerTitle="{{ config('app.name') }}" headerSubTitle="Welcome, please login"
-    formAction="{{ route('login') }}" buttonIcon="fa-sign-in-alt" buttonText="Sign In"
-    copyrightText="{{ config('app.name') }}" :inputs="[
+<x-layouts.auth.app headerBlockTitle="Sign In" headerHrefOptionText="{{ route('password.request') }}"
+    headerOptionText="Forgot Password?" headerHrefOptionIcon="{{ route('register') }}" headerOptionIcon="fa-user-plus"
+    headerTitleOptionIcon="New Account" contentHeaderSubTitle="Welcome, please login"
+    contentFormAction="{{ route('login') }}" contentButtonSubmitIcon="fa-sign-in-alt" contentButtonSubmitText="Sign In"
+    :contentInputs="[
         [
             'type' => 'email',
             'id' => 'email_field',
             'name' => 'email',
             'type' => 'email',
             'placeholder' => 'Email',
-            'validation' => 'required|email',
+            'attribute' => 'required',
         ],
         [
             'type' => 'password',
@@ -19,13 +17,12 @@
             'name' => 'password',
             'type' => 'password',
             'placeholder' => 'Password',
-            'validation' => 'required',
+            'attribute' => 'required',
         ],
         [
             'type' => 'checkbox',
             'id' => 'remember_field',
             'name' => 'remember',
             'placeholder' => 'Remember me',
-            'validation' => '',
         ],
     ]" />

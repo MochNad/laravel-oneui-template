@@ -1,0 +1,84 @@
+[
+    {
+        "name": "dashboard",
+        "module": "dashboard",
+        "slug": "dashboard",
+        "icon": "si si-speedometer",
+        "url": "dashboard",
+        "type": "dashboard",
+        "childrens": []
+    },
+    {
+        "name": "profile",
+        "module": "profile",
+        "slug": "profile",
+        "icon": "si si-user",
+        "url": "profile",
+        "type": "dashboard",
+        "childrens": []
+    },
+    {
+        "title": "masters",
+        "name": "authorizations",
+        "module": "authorizations",
+        "slug": "authorizations",
+        "icon": "si si-lock-open",
+        "url": "authorizations",
+        "type": "dashboard",
+        "childrens": [
+            {
+                "name": "role",
+                "module": "authorizations.role",
+                "slug": "authorizations-role",
+                "url": "authorizations/role",
+                "type": "dashboard",
+                "childrens": []
+            },
+            {
+                "name": "permission",
+                "module": "authorizations.permission",
+                "slug": "authorizations-permission",
+                "url": "authorizations/permission",
+                "type": "dashboard",
+                "childrens": []
+            }
+        ]
+    },
+    {
+        "title": "masters",
+        "name": "menus",
+        "module": "menus",
+        "slug": "menus",
+        "icon": "si si-list",
+        "url": "menus",
+        "type": "dashboard",
+        "childrens": [
+            {
+                "name": "dashboard",
+                "module": "menus.dashboard",
+                "slug": "menus-dashboard",
+                "url": "menus/dashboard",
+                "type": "dashboard",
+                "childrens": []
+            },
+            {
+                "name": "landing",
+                "module": "menus.landing",
+                "slug": "menus-landing",
+                "url": "menus/landing",
+                "type": "dashboard",
+                "childrens": []
+            }
+        ]
+    },
+    {
+        "title": "managements",
+        "name": "user",
+        "module": "user",
+        "slug": "user",
+        "icon": "si si-user",
+        "url": "user",
+        "type": "dashboard",
+        "childrens": []
+    }
+]

@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return response()->json(['redirect' => route('dashboard')]);
+        return jsonRedirect('dashboard.index', 'Welcome back ' . auth()->user()->name . '!');
     }
 
     /**
@@ -42,6 +42,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return response()->json(['redirect' => route('login')]);
+        return jsonRedirect('login', 'You have been logged out!');
     }
 }

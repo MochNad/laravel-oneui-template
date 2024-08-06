@@ -1,7 +1,7 @@
-(function () {
+!(function () {
     "use strict";
 
-    class FormHandler {
+    class Response {
         static initResponse() {
             jQuery("form").on("submit", function (event) {
                 event.preventDefault();
@@ -28,20 +28,28 @@
                                         xhr.responseJSON.redirect;
                                 } else if (
                                     xhr.responseJSON &&
-                                    xhr.responseJSON.success
+                                    xhr.responseJSON.tableId &&
+                                    xhr.responseJSON.modalId &&
+                                    xhr.responseJSON.message
                                 ) {
                                     One.helpers("jq-notify", {
                                         type: "success",
                                         icon: "fa fa-check me-1",
-                                        align: "center",
-                                        message: xhr.responseJSON.success,
+                                        align: "right",
+                                        message: xhr.responseJSON.message,
                                     });
-                                } else {
+                                    jQuery(xhr.responseJSON.tableId)
+                                        .DataTable()
+                                        .ajax.reload();
+                                    jQuery(xhr.responseJSON.modalId).modal(
+                                        "hide"
+                                    );
+                                } else if (xhr.responseJSON.success) {
                                     One.helpers("jq-notify", {
-                                        type: "danger",
-                                        icon: "fa fa-times me-1",
-                                        align: "center",
-                                        message: xhr.responseJSON.status,
+                                        type: "success",
+                                        icon: "fa fa-check me-1",
+                                        align: "right",
+                                        message: xhr.responseJSON.success,
                                     });
                                 }
                                 submitButton.html(originalButtonText);
@@ -58,7 +66,7 @@
                                 One.helpers("jq-notify", {
                                     type: "danger",
                                     icon: "fa fa-times me-1",
-                                    align: "center",
+                                    align: "right",
                                     message:
                                         response.message || "An error occurred",
                                 });
@@ -76,5 +84,5 @@
         }
     }
 
-    One.onLoad(() => FormHandler.init());
+    One.onLoad(() => Response.init());
 })();

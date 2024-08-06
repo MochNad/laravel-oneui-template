@@ -54,7 +54,7 @@ class NewPasswordController extends Controller
         // the application's home authenticated view. If there is an error we can
         // redirect them back to where they came from with their error message.
         if ($status == Password::PASSWORD_RESET) {
-            return response()->json(['redirect' => route('login')]);
+            return jsonRedirect('login', 'Password reset successfully');
         } else {
             return response()->json(['status' => __($status)]);
         }
